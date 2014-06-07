@@ -13,6 +13,8 @@ Spree::UserRegistrationsController.class_eval do
   end
 
   def clear_omniauth
-    session[:omniauth] = nil unless @spree_user.new_record?
+    if @spree_user
+      session[:omniauth] = nil unless @spree_user.new_record?
+    end
   end
 end
